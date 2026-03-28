@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .card {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 40px 30px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    h1 {
+      color: #38bdf8;
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+
+    p {
+      color: #94a3b8;
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 52px 14px 16px;
+      background: #334155;
+      border: none;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 16px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+    }
+
+    /* Password Toggle with smooth animation */
+/* Password Toggle - Fixed Right Alignment */
+.password-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0px;           /* Pushes it to the right edge */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 50%;
+  z-index: 10;
+  line-height: 1;
+}
+
+    /* Remember Me */
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 0 25px 0;
+      font-size: 14px;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #cbd5e1;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .remember-me input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #38bdf8;
+      cursor: pointer;
+    }
+
+    .forgot-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .forgot-link:hover {
+      text-decoration: underline;
+    }
+
+    .sign-in-button {
+      width: 100%;
+      padding: 14px;
+      background: #38bdf8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .sign-in-button:hover {
+      background: #0ea5e9;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="card">
+      <h1>Welcome Back</h1>
+      <p>Sign in to continue to your account</p>
+
+      <form>
+        <div class="input-group">
+          <label for="email">Email or Username</label>
+          <input type="text" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <!-- Replace your current password input section with this -->
+<div class="input-group">
+  <label for="password">Password</label>
+  <div class="password-wrapper">
+    <input 
+      type="password" 
+      id="password" 
+      placeholder="Enter your password" 
+      required>
+    <button type="button" class="toggle-password" id="toggleBtn">
+      <i class="fa-solid fa-eye"></i>
+    </button>
+  </div>
+</div>
+
+        <div class="options">
+          <label class="remember-me">
+            <input type="checkbox" id="remember">
+            Remember me
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="sign-in-button">Sign In</button>
+      </form>
+
+      <div class="footer">
+        Don't have an account? 
+        <a href="#">Sign up</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const passwordInput = document.getElementById('password');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    toggleBtn.addEventListener('click', function () {
+      // Add active class for animation
+      toggleBtn.classList.add('active');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleBtn.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+      } else {
+        passwordInput.type = 'password';
+        toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+      }
+    });
+  </script>
+
+</body>
+</html>
