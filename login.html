@@ -3,53 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Login - Placement Prep Tracker</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    html {
-  background: #0f172a;   /* Matches the start of your gradient */
-  min-height: 100%;
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
 
-body {
-  /* Your existing body styles stay the same */
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: #e2e8f0;
-  margin: 0;
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     .container {
-      max-width: 400px;
+      max-width: 460px;           /* Increased from 400px */
       width: 100%;
+      padding: 20px;
     }
 
     .card {
       background: #1e293b;
-      border-radius: 16px;
-      padding: 40px 30px;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      border-radius: 20px;        /* Slightly rounder */
+      padding: 48px 40px;         /* More comfortable padding */
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
       text-align: center;
     }
 
     h1 {
       color: #38bdf8;
-      margin-bottom: 8px;
-      font-size: 28px;
+      margin-bottom: 10px;
+      font-size: 30px;
     }
 
     p {
       color: #94a3b8;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
+      font-size: 15.5px;
     }
 
     .input-group {
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       text-align: left;
       position: relative;
     }
@@ -58,55 +57,48 @@ body {
       display: block;
       margin-bottom: 8px;
       color: #cbd5e1;
-      font-size: 14px;
+      font-size: 14.5px;
     }
 
     input {
       width: 100%;
-      padding: 14px 52px 14px 16px;
+      padding: 15px 16px;
       background: #334155;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       color: #e2e8f0;
       font-size: 16px;
       box-sizing: border-box;
-      transition: all 0.3s ease;
     }
 
     input:focus {
       outline: none;
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.45);
     }
 
-    /* Password Toggle with smooth animation */
-/* Password Toggle - Fixed Right Alignment */
-.password-wrapper {
-  position: relative;
-}
+    .password-wrapper {
+      position: relative;
+    }
 
-.toggle-password {
-  position: absolute;
-  right: 0px;           /* Pushes it to the right edge */
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #94a3b8;
-  cursor: pointer;
-  font-size: 20px;
-  padding: 8px;
-  border-radius: 50%;
-  z-index: 10;
-  line-height: 1;
-}
+    .toggle-password {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 21px;
+      padding: 6px;
+    }
 
-    /* Remember Me */
     .options {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 20px 0 25px 0;
-      font-size: 14px;
+      margin: 22px 0 28px 0;
+      font-size: 14.5px;
     }
 
     .remember-me {
@@ -118,35 +110,17 @@ body {
       user-select: none;
     }
 
-    .remember-me input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: #38bdf8;
-      cursor: pointer;
-    }
-
-    .forgot-link {
-      color: #38bdf8;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .forgot-link:hover {
-      text-decoration: underline;
-    }
-
     .sign-in-button {
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       background: #38bdf8;
       color: white;
       border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
+      border-radius: 10px;
+      font-size: 16.5px;
+      font-weight: 600;
       cursor: pointer;
-      transition: 0.3s;
-      margin-bottom: 20px;
+      transition: all 0.3s ease;
     }
 
     .sign-in-button:hover {
@@ -156,53 +130,45 @@ body {
 
     .footer {
       color: #94a3b8;
-      font-size: 14px;
+      font-size: 14.5px;
+      text-align: center;
+      margin-top: 10px;
     }
 
     .footer a {
       color: #38bdf8;
       text-decoration: none;
     }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
-
   <div class="container">
     <div class="card">
       <h1>Welcome Back</h1>
-      <p>Sign in to continue to your account</p>
+      <p>Sign in to continue to your placement prep</p>
 
-      <form>
+      <form id="loginForm">
         <div class="input-group">
-          <label for="email">Email or Username</label>
-          <input type="text" id="email" placeholder="Enter your email" required>
+          <label for="username">Username or Email</label>
+          <input type="text" id="username" placeholder="Enter your username" required>
         </div>
 
-        <!-- Replace your current password input section with this -->
-<div class="input-group">
-  <label for="password">Password</label>
-  <div class="password-wrapper">
-    <input 
-      type="password" 
-      id="password" 
-      placeholder="Enter your password" 
-      required>
-    <button type="button" class="toggle-password" id="toggleBtn">
-      <i class="fa-solid fa-eye"></i>
-    </button>
-  </div>
-</div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="button" class="toggle-password" id="toggleBtn">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+        </div>
 
         <div class="options">
           <label class="remember-me">
             <input type="checkbox" id="remember">
             Remember me
           </label>
-          <a href="#" class="forgot-link">Forgot password?</a>
+          <a href="#" class="forgot-link" onclick="alert('Forgot password feature coming soon!')">Forgot password?</a>
         </div>
 
         <button type="submit" class="sign-in-button">Sign In</button>
@@ -210,19 +176,17 @@ body {
 
       <div class="footer">
         Don't have an account? 
-        <a href="#">Sign up</a>
+        <a href="#" onclick="alert('Registration feature coming soon!')">Sign up</a>
       </div>
     </div>
   </div>
 
   <script>
+    // Password Toggle
     const passwordInput = document.getElementById('password');
     const toggleBtn = document.getElementById('toggleBtn');
 
     toggleBtn.addEventListener('click', function () {
-      // Add active class for animation
-      toggleBtn.classList.add('active');
-
       if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         toggleBtn.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
@@ -231,7 +195,22 @@ body {
         toggleBtn.innerHTML = '<i class="fa-solid fa-eye"></i>';
       }
     });
-  </script>
 
+    // Login Form Handler
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+
+      if (username === '') {
+        alert('Please enter your username or email');
+        return;
+      }
+
+      // Save username and redirect
+      localStorage.setItem('currentUser', username);
+      window.location.href = 'index.html';
+    });
+  </script>
 </body>
 </html>

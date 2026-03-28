@@ -7,87 +7,83 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    html {
-      background: #0f172a;
-      min-height: 100%;
-      margin: 0;
-      padding: 0;
+    :root {
+      --primary: #38bdf8;
+      --dark: #0f172a;
+      --card: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #e2e8f0;
-      margin: 0;
-      padding: 20px;
+      background: linear-gradient(135deg, var(--dark), #1e293b);
+      color: var(--text);
       min-height: 100vh;
+      padding: 20px;
     }
+
+    .container { max-width: 920px; margin: 0 auto; }
 
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
       flex-wrap: wrap;
       gap: 15px;
     }
 
     h1 {
-      color: #38bdf8;
-      margin: 0;
-      font-size: 28px;
-    }
-
-    .sign-in-btn {
-      background: #38bdf8;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
+      color: var(--primary);
+      font-size: 29px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .sign-in-btn:hover {
-      background: #0ea5e9;
-      transform: translateY(-2px);
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--card);
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 15px;
     }
 
     .card {
-      background: #1e293b;
-      border-radius: 16px;
-      padding: 20px;
-      margin: 15px 0;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      background: var(--card);
+      border-radius: 18px;
+      padding: 26px;
+      margin-bottom: 22px;
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.35);
     }
 
-    input, select, button {
-      padding: 12px;
-      margin: 8px 4px;
-      border-radius: 8px;
+    input[type="number"], select {
+      padding: 13px 16px;
+      margin: 8px 6px 8px 0;
+      border-radius: 10px;
       border: none;
+      background: #334155;
+      color: white;
       font-size: 16px;
     }
 
-    input[type="number"] {
-      width: 140px;
-    }
+    input[type="number"] { width: 165px; }
 
     button {
-      background: #38bdf8;
+      padding: 13px 20px;
+      margin: 8px 6px;
+      border-radius: 10px;
+      border: none;
+      background: var(--primary);
       color: white;
+      font-weight: 600;
       cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
+      transition: all 0.3s;
     }
 
     button:hover {
@@ -95,58 +91,59 @@
       transform: translateY(-2px);
     }
 
-    .btn-danger {
-      background: #ef4444;
-    }
-    .btn-danger:hover {
-      background: #dc2626;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      background: #334155;
-      padding: 10px 15px;
-      margin: 6px 0;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-    }
+    .btn-danger { background: #ef4444; }
+    .btn-danger:hover { background: #dc2626; }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
     }
 
     .stat {
       background: #334155;
-      padding: 15px;
+      padding: 22px 16px;
       border-radius: 12px;
       text-align: center;
     }
 
     .stat h2 {
-      margin: 5px 0;
-      color: #38bdf8;
+      margin: 6px 0 6px;
+      color: var(--primary);
+      font-size: 34px;
+    }
+
+    ul { list-style: none; padding: 0; }
+
+    li {
+      background: #334155;
+      padding: 13px 18px;
+      margin: 8px 0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logout-btn {
+      background: #ef4444;
+      padding: 9px 18px;
+      font-size: 14.5px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Header with Sign In Button -->
     <div class="header">
       <div>
         <h1>⚡ Placement Prep Tracker</h1>
-        <p style="color:#94a3b8; margin: 5px 0 0 0;">Track your DSA + Study progress for placements</p>
+        <p style="color: var(--muted); margin-top: 4px;">Track your DSA + Study progress for placements</p>
       </div>
-      <button class="sign-in-btn" onclick="goToLogin()">
-        <i class="fas fa-sign-in-alt"></i>
-        Sign In
-      </button>
+      
+      <div class="user-info">
+        <span>Welcome, <strong id="usernameDisplay">User</strong></span>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </div>
     </div>
 
     <!-- Add Progress -->
@@ -167,11 +164,12 @@
         <option>Binary Search</option>
         <option>Heap</option>
         <option>Backtracking</option>
+        <option>Bit Manipulation</option>
       </select>
       
       <br><br>
       <button onclick="addProgress()">✅ Add Progress</button>
-      <button onclick="resetData()" class="btn-danger">Reset All Data</button>
+      <button onclick="resetData()" class="btn-danger">Reset My Data</button>
     </div>
 
     <!-- Stats -->
@@ -203,16 +201,23 @@
       <ul id="topicsList"></ul>
     </div>
 
-    <!-- Progress Chart -->
+    <!-- Weekly Chart -->
     <div class="card">
       <h3>Weekly Progress</h3>
-      <canvas id="weeklyChart" height="100"></canvas>
+      <canvas id="weeklyChart" height="115"></canvas>
     </div>
   </div>
 
   <script>
-    // Your existing JavaScript remains the same
-    let data = JSON.parse(localStorage.getItem("placementPrepData")) || {
+    // Redirect to login if no user is logged in
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser) {
+      window.location.href = 'login.html';
+    }
+
+    // Load user-specific data
+    let dataKey = `placementData_${currentUser}`;
+    let data = JSON.parse(localStorage.getItem(dataKey)) || {
       totalProblems: 0,
       totalHours: 0,
       streak: 0,
@@ -223,6 +228,14 @@
 
     function getToday() {
       return new Date().toISOString().split('T')[0];
+    }
+
+    function saveData() {
+      localStorage.setItem(dataKey, JSON.stringify(data));
+    }
+
+    function updateUsername() {
+      document.getElementById('usernameDisplay').textContent = currentUser;
     }
 
     function addProgress() {
@@ -237,16 +250,14 @@
 
       const today = getToday();
 
-      // Streak Logic
+      // Streak logic
       if (data.lastDate) {
         const last = new Date(data.lastDate);
         const curr = new Date(today);
-        const diff = Math.floor((curr - last) / (1000 * 60 * 60 * 24));
-        if (diff === 1) {
-          data.streak++;
-        } else if (diff > 1) {
-          data.streak = 1;
-        }
+        const diff = Math.floor((curr - last) / 86400000);
+
+        if (diff === 1) data.streak++;
+        else if (diff > 1) data.streak = 1;
       } else {
         data.streak = 1;
       }
@@ -259,14 +270,11 @@
         data.topics[topic] = (data.topics[topic] || 0) + problems;
       }
 
-      data.history.push({
-        date: today,
-        problems: problems,
-        hours: hours
-      });
+      data.history.push({ date: today, problems, hours });
 
-      localStorage.setItem("placementPrepData", JSON.stringify(data));
-
+      saveData();
+      
+      // Clear inputs
       document.getElementById("problems").value = "";
       document.getElementById("hours").value = "";
 
@@ -279,11 +287,20 @@
       document.getElementById("totalHours").textContent = data.totalHours.toFixed(1);
       document.getElementById("currentStreak").textContent = data.streak;
 
+      const oneWeekAgo = new Date();
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+      const thisWeekCount = data.history
+        .filter(h => new Date(h.date) >= oneWeekAgo)
+        .reduce((sum, item) => sum + (item.problems || 0), 0);
+      
+      document.getElementById("thisWeek").textContent = thisWeekCount;
+
+      // Topic list
       const topicsList = document.getElementById("topicsList");
       topicsList.innerHTML = "";
 
       if (Object.keys(data.topics).length === 0) {
-        topicsList.innerHTML = "<li style='color:#64748b'>No topics added yet</li>";
+        topicsList.innerHTML = `<li style="color:#64748b; justify-content:center">No topics added yet</li>`;
       } else {
         Object.keys(data.topics).sort().forEach(topic => {
           const li = document.createElement("li");
@@ -301,16 +318,16 @@
 
       const labels = [];
       const problemsData = [];
-
       const today = new Date();
+
       for (let i = 6; i >= 0; i--) {
         const d = new Date(today);
         d.setDate(d.getDate() - i);
         const dateStr = d.toISOString().split('T')[0];
-        labels.push(d.toLocaleDateString('en-US', {weekday: 'short'}));
-        
+        labels.push(d.toLocaleDateString('en-US', { weekday: 'short' }));
+
         const dayData = data.history.filter(h => h.date === dateStr);
-        const totalProb = dayData.reduce((sum, item) => sum + item.problems, 0);
+        const totalProb = dayData.reduce((sum, item) => sum + (item.problems || 0), 0);
         problemsData.push(totalProb);
       }
 
@@ -329,29 +346,32 @@
         },
         options: {
           responsive: true,
+          maintainAspectRatio: false,
           scales: {
-            y: { beginAtZero: true, grid: {color: '#334155'} },
-            x: { grid: {color: '#334155'} }
+            y: { beginAtZero: true, grid: { color: '#334155' } },
+            x: { grid: { color: '#334155' } }
           },
-          plugins: {
-            legend: { display: false }
-          }
+          plugins: { legend: { display: false } }
         }
       });
     }
 
     function resetData() {
-      if (confirm("Are you sure you want to reset ALL data? This cannot be undone.")) {
-        localStorage.removeItem("placementPrepData");
+      if (confirm(`Reset ALL data for ${currentUser}? This cannot be undone.`)) {
+        localStorage.removeItem(dataKey);
         location.reload();
       }
     }
 
-    function goToLogin() {
-      window.location.href = "login.html";   // Change this if your login file has a different name
+    function logout() {
+      if (confirm("Logout from your account?")) {
+        localStorage.removeItem('currentUser');
+        window.location.href = 'login.html';
+      }
     }
 
     // Initialize
+    updateUsername();
     updateUI();
   </script>
 </body>
