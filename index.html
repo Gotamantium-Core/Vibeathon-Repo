@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Placement Prep Tracker</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    input, select, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      background: #38bdf8;
+      cursor: pointer;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 15px;
+      margin: 10px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>⚡ Placement Prep Tracker</h1>
+
+  <div class="card">
+    <h3>Add Today's Progress</h3>
+    <input type="number" id="problems" placeholder="Problems solved" />
+    
+    <select id="topic">
+      <option>Arrays</option>
+      <option>Strings</option>
+      <option>Trees</option>
+      <option>Graphs</option>
+      <option>DP</option>
+    </select>
+
+    <br>
+    <button onclick="addProgress()">Add</button>
+  </div>
+
+  <div class="card">
+    <h3>Stats</h3>
+    <p id="total"></p>
+    <p id="streak"></p>
+  </div>
+
+  <div class="card">
+    <h3>Topic Breakdown</h3>
+    <ul id="topics"></ul>
+  </div>
+
+<script>
+let data = JSON.parse(localStorage.getItem("prepData")) || {
+  total: 0,
+  topics: {},
+  lastDate: null,
+  streak: 0
+};
+
+function getToday() {
+  return new Date().toISOString().split("T")[0];
+}
+
+function addProgress() {
+  let problems = parseInt(document.getElementById("problems").value);
+  let topic = document.getElementById("topic").value;
+
+  if (!problems) return alert("Enter valid number!");
+
+  let today = getToday();
+
+  // Streak logic
+  if (data.lastDate) {
+    let last = new Date(data.lastDate);
+    let curr = new Date(today);
+    let diff = (curr - last) / (1000 * 60 * 60 * 24);
+
+    if (diff === 1) data.streak++;
+    else if (diff > 1) data.streak = 1;
+  } else {
+    data.streak = 1;
+  }
+
+  data.lastDate = today;
+
+  // Update totals
+  data.total += problems;
+  data.topics[topic] = (data.topics[topic] || 0) + problems;
+
+  localStorage.setItem("prepData", JSON.stringify(data));
+  updateUI();
+}
+
+function updateUI() {
+  document.getElementById("total").innerText =
+    "Total Problems Solved: " + data.total;
+
+  document.getElementById("streak").innerText =
+    "🔥 Current Streak: " + data.streak + " days";
+
+  let list = document.getElementById("topics");
+  list.innerHTML = "";
+
+  for (let t in data.topics) {
+    let li = document.createElement("li");
+    li.innerText = t + ": " + data.topics[t];
+    list.appendChild(li);
+  }
+}
+
+updateUI();
+</script>
+
+</body>
+</html>
