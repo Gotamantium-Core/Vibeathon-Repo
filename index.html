@@ -91,7 +91,7 @@
     <p style="color:#94a3b8;">Track your DSA + Study progress for placements</p>
 
     <!-- Add Progress -->
-    <div class="card">
+    <div class="card"> 
       <h3>Add Today's Progress</h3>
       <input type="number" id="problems" placeholder="Problems Solved" min="0" />
       <input type="number" id="hours" placeholder="Hours Studied" step="0.5" min="0" />
@@ -172,6 +172,9 @@ function addProgress() {
 
   if (problems === 0 && hours === 0) {
     alert("Please enter problems solved or hours studied!");
+    return;
+  } else if (problems <= 0 || hours <= 0) {
+    alert("Enter valid values bruh");
     return;
   }
 
