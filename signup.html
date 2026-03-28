@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login — Placement Prep Tracker</title>
+  <title>Sign Up — Placement Prep Tracker</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -13,39 +13,42 @@
       <div class="auth-logo">
         <div class="auth-logo-icon">⚡</div>
       </div>
-      <h1 class="auth-title">Welcome Back</h1>
-      <p class="auth-subtitle">Sign in to your tracker</p>
+      <h1 class="auth-title">Create Account</h1>
+      <p class="auth-subtitle">Start your placement journey</p>
 
-      <div class="error-msg" id="loginError"></div>
+      <div class="error-msg" id="signupError"></div>
 
-      <form id="loginForm">
+      <form id="signupForm">
         <div class="input-group">
-          <label>Email or Username</label>
-          <input type="text" id="loginInput" placeholder="Enter email or username" autocomplete="username" required>
+          <label>Username</label>
+          <input type="text" id="username" placeholder="Choose a username" autocomplete="username" required>
         </div>
-
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="Enter your email" autocomplete="email" required>
+        </div>
         <div class="input-group">
           <label>Password</label>
           <div class="pw-wrapper">
-            <input type="password" id="password" placeholder="Enter password" autocomplete="current-password" required>
+            <input type="password" id="password" placeholder="Create a password (min 6 chars)" autocomplete="new-password" required>
             <button type="button" class="pw-toggle" onclick="togglePassword('password', 'eyeIcon')">
               <i class="fa-solid fa-eye" id="eyeIcon"></i>
             </button>
           </div>
         </div>
 
-        <button type="submit" class="btn-primary">Sign In</button>
+        <button type="submit" class="btn-primary">Create Account</button>
       </form>
 
       <p class="auth-footer">
-        Don't have an account? <a href="signup.html">Sign up</a>
+        Already have an account? <a href="login.html">Sign in</a>
       </p>
     </div>
   </div>
 
   <script src="script.js"></script>
   <script>
-    document.getElementById('loginForm').addEventListener('submit', handleLogin);
+    document.getElementById('signupForm').addEventListener('submit', handleSignup);
   </script>
 </body>
 </html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Progress — Placement Prep Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard-container">
+
+    <!-- Nav -->
+    <div class="nav-bar">
+      <span class="nav-brand">⚡ PrepTrack</span>
+      <a href="index.html" class="nav-btn">Dashboard</a>
+      <a href="add.html" class="nav-btn active">+ Add Progress</a>
+    </div>
+
+    <div class="add-container">
+      <div class="add-card">
+        <h1><i class="fas fa-plus-circle"></i> Add Today's Progress</h1>
+
+        <div class="input-row">
+          <div class="input-group">
+            <label for="problems">Problems Solved</label>
+            <input type="number" id="problems" placeholder="e.g. 15" min="0">
+          </div>
+          <div class="input-group">
+            <label for="hours">Hours Studied</label>
+            <input type="number" id="hours" placeholder="e.g. 2.5" step="0.5" min="0">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="topic">Topic Focused</label>
+          <select id="topic">
+            <option value="">Select Topic</option>
+            <option>Arrays</option>
+            <option>Strings</option>
+            <option>Linked Lists</option>
+            <option>Trees</option>
+            <option>Graphs</option>
+            <option>Dynamic Programming</option>
+            <option>Greedy</option>
+            <option>Binary Search</option>
+            <option>Heap</option>
+            <option>Backtracking</option>
+            <option>Bit Manipulation</option>
+          </select>
+        </div>
+
+        <div class="action-buttons">
+          <button onclick="addProgressFromAddPage()" class="primary-btn">
+            <i class="fas fa-check"></i> Add Progress
+          </button>
+          <button onclick="window.location.href='index.html'" class="secondary-btn">
+            ← Back
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
